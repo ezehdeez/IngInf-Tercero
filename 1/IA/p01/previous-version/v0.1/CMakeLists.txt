@@ -38,13 +38,13 @@ set(CMAKE_CXX_FLAGS_DEBUG "-g -O0 -Wall -Wextra -Wpedantic -Weffc++")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
 # tell cmake where to look for *.h files
-include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/src)
 
 # Adds an executable target called "aestrella" to be built from the source files listed in the command invocation.
 add_executable(aestrella
     src/main.cc
     src/grid.cc
-    src/functions.cc
+    include/grid.h
 )
 
 # Add expected compiler features to a target.

@@ -72,7 +72,7 @@ void AStarSearch(const Grid& grid, const std::pair<int, int>& origin_coords,
                  const std::string& trace_output_file) {
   OpenNodeList open;
   ClosedNodeList closed;
-  const int offset_r[] = {-1, 1, 0, 0};
+  const int offset_r[] = {1, -1, 0, 0};
   const int offset_c[] = {0, 0, 1, -1};
   std::ofstream trace_file{trace_output_file};
   if (!trace_file.is_open()) {

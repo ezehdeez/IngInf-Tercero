@@ -40,7 +40,7 @@ class Grid {
   double GetEntryCost(int r, int c) const;
 
   bool IsValid(int r, int c) const {
-    return r >= 0 && r < rows_ && c >= 0 && c < columns_;
+    return r >= 1 && r <= rows_ && c >= 1 && c <= columns_;
   }
   bool IsObstacle(int r, int c) const;
   void WritePath(const std::vector<std::pair<int, int>>& path,
@@ -50,8 +50,8 @@ class Grid {
   int rows_;
   int columns_;
   std::vector<std::vector<int>> grid_;
-  std::pair<int, int> origin_{-1, -1};
-  std::pair<int, int> destination_{-1, -1};
+  std::pair<int, int> origin_{0, 0};
+  std::pair<int, int> destination_{0, 0};
 };
 
 #endif

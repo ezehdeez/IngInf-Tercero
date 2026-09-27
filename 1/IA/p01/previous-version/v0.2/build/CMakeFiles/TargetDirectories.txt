@@ -1,0 +1,3 @@
+/Users/ezehdezpl/www/copilot-worktrees/IngInf-Tercero/ezehdeez-literate-sniffle/1/IA/p01/build/CMakeFiles/aestrella.dir
+/Users/ezehdezpl/www/copilot-worktrees/IngInf-Tercero/ezehdeez-literate-sniffle/1/IA/p01/build/CMakeFiles/edit_cache.dir
+/Users/ezehdezpl/www/copilot-worktrees/IngInf-Tercero/ezehdeez-literate-sniffle/1/IA/p01/build/CMakeFiles/rebuild_cache.dir

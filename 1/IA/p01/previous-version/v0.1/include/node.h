@@ -12,11 +12,11 @@
  */
 
 #include <memory>
-#include <queue>
 #include <set>
-#include <tuple>
-#include <utility>
-#include <vector>
+#include <queue>
+
+using OpenNodeList = std::priority_queue<std::shared_ptr<Node>, std::vector<Node>, CompareFNode>;
+using ClosedNodeList = std::set<Node>;
 
 struct Node {
   int r_, c_;
@@ -31,19 +31,7 @@ struct Node {
 };
 
 struct CompareFNode {
-  bool operator()(const std::shared_ptr<Node>& a,
-                  const std::shared_ptr<Node>& b) const {
-    if (a->f_ != b->f_) {
-      return a->f_ > b->f_;
-    }
-    if (a->h_ != b->h_) {
-      return a->h_ > b->h_;
-    }
-    return std::tie(a->r_, a->c_) > std::tie(b->r_, b->c_);
+  bool operator()(const std::shared_ptr<Node>& a, const std::shared_ptr<Node>& b) {
+    return a->f_ > b->f_;
   }
 };
-
-using OpenNodeList =
-    std::priority_queue<std::shared_ptr<Node>,
-                        std::vector<std::shared_ptr<Node>>, CompareFNode>;
-using ClosedNodeList = std::set<std::pair<int, int>>;
