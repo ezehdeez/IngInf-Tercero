@@ -1,0 +1,1 @@
+/usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/aestrella.dir/src/main.cc.o CMakeFiles/aestrella.dir/src/grid.cc.o CMakeFiles/aestrella.dir/src/functions.cc.o -o aestrella
