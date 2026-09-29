@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/ezehdezpl/www/IngInf-Tercero/1/IA/p01/src
+CXX_INCLUDES = -I/Users/ezehdezpl/www/IngInf-Tercero/1/IA/p01/include
 
 CXX_FLAGSarm64 = -std=gnu++17 -arch arm64 -Wall -Wextra -Wpedantic -Weffc++
 

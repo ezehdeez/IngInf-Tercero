@@ -28,10 +28,9 @@ int main(int argc, char* argv[]) {
       std::cerr << "Uso: " << argv[0] << " <mapa>\n";
       return 1;
     }
-    Grid grid(10, 11);
+    Grid grid;
     grid.BuildEnvironment(argv[1]);
-    AStarSearch(grid, grid.GetOriginCoords(), grid.GetDestinationCoords(),
-                "mapa_camino.txt", "traza.txt");
+    AStarSearch(grid, grid.GetOriginCoords(), grid.GetDestinationCoords(), "map_" + std::string(argv[1]), "trace_" + std::string(argv[1]));
   } catch(const std::exception& e) {
     std::cerr << "[ERROR]: " << e.what() << "\n";
     return 1;

@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/aestrella.dir/src/functions.cc.o"
+  "CMakeFiles/aestrella.dir/src/functions.cc.o.d"
   "CMakeFiles/aestrella.dir/src/grid.cc.o"
   "CMakeFiles/aestrella.dir/src/grid.cc.o.d"
   "CMakeFiles/aestrella.dir/src/main.cc.o"

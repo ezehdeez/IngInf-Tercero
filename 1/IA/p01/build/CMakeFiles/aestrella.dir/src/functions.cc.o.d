@@ -1,6 +1,7 @@
-CMakeFiles/aestrella.dir/src/grid.cc.o: \
-  /Users/ezehdezpl/www/IngInf-Tercero/1/IA/p01/src/grid.cc \
-  /Users/ezehdezpl/www/IngInf-Tercero/1/IA/p01/src/../include/grid.h \
+CMakeFiles/aestrella.dir/src/functions.cc.o: \
+  /Users/ezehdezpl/www/IngInf-Tercero/1/IA/p01/src/functions.cc \
+  /Users/ezehdezpl/www/IngInf-Tercero/1/IA/p01/src/../include/functions.h \
+  /Users/ezehdezpl/www/IngInf-Tercero/1/IA/p01/src/../include/../include/grid.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/fstream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__config_site \
@@ -811,4 +812,7 @@ CMakeFiles/aestrella.dir/src/grid.cc.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/path_iterator.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/recursive_directory_iterator.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/u8path.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/sstream
+  /Users/ezehdezpl/www/IngInf-Tercero/1/IA/p01/src/../include/../include/node.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/set \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__tree \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/iostream

@@ -8,41 +8,75 @@
  * @file grid.cc
  * @author Ezequiel Hernández Poleo (alu0101735399@ull.edu.es)
  * @date 2026-09-22
- * @brief 
+ * @brief Method declarations from the Grid Class. 
  */
 
 #include "../include/grid.h"
 
+#include <sstream>
+
+/**
+ * @brief Method to load tha values for any enviroment the a Grid object.
+ * 
+ * @param input_file_name 
+ */
 void Grid::BuildEnvironment(const std::string& input_file_name) {
   std::ifstream input_file{input_file_name};
-  if (!input_file.is_open()) {
+  if(!input_file.is_open()) {
     throw std::runtime_error("File " + input_file_name + " cannot be open.");
   }
+  std::vector<std::vector<int>> loaded_grid;
+  std::string line;
+  while(std::getline(input_file, line)) {
+    std::istringstream line_stream{line};
+    std::vector<int> loaded_row;
+    int value = 0;
+    while(line_stream >> value) {
+      loaded_row.push_back(value);
+    }
+    if(loaded_row.empty()) {
+      continue;
+    }
+    if(!loaded_grid.empty() && loaded_row.size() != loaded_grid.front().size()) {
+      throw std::runtime_error("All map rows must have the same number of cells.");
+    }
+    loaded_grid.push_back(std::move(loaded_row));
+  }
+  
+  if(loaded_grid.empty()) {
+    throw std::runtime_error("The map cannot be empty.");
+  }
+
+  // Fill the first attributes
+  grid_ = std::move(loaded_grid);
+  rows_ = static_cast<int>(grid_.size());
+  columns_ = static_cast<int>(grid_.front().size());
+  origin_ = {-1, -1};
+  destination_ = {-1, -1};
+
+  // Search for origin and destination
   for (int matrix_row = 0; matrix_row < rows_; ++matrix_row) {
     for (int matrix_column = 0; matrix_column < columns_; ++matrix_column) {
-      int value = 0;
-      if (!(input_file >> value)) {
-        throw std::runtime_error("The map does not contain enough cells.");
-      }
-      grid_[matrix_row][matrix_column] = value;
-      const int r = matrix_row;
-      const int c = matrix_column;
+      const int value = grid_[matrix_row][matrix_column];
       if (value == 0) {
-        origin_ = {r, c};
+        origin_ = {matrix_row, matrix_column};
       } else if (value == 10) {
-        destination_ = {r, c};
+        destination_ = {matrix_row, matrix_column};
       }
     }
-  }
-  int extra_value = 0;
-  if (input_file >> extra_value) {
-    throw std::runtime_error("The map contains more cells than expected.");
   }
   if (origin_.first < 0 || destination_.first < 0) {
     throw std::runtime_error("The map must contain an origin (0) and destination (10).");
   }
 }
 
+/**
+ * @brief Just to check if a cell in the enviroment is an obstacle.
+ * 
+ * @param r 
+ * @param c 
+ * @return bool 
+ */
 bool Grid::IsObstacle(int r, int c) const {
   if (!IsValid(r, c)) {
     return true;
@@ -50,6 +84,13 @@ bool Grid::IsObstacle(int r, int c) const {
   return GetEntryCost(r, c) < 0;
 }
 
+/**
+ * @brief Function to return the entry cost for a cell value.
+ * 
+ * @param r 
+ * @param c 
+ * @return double 
+ */
 double Grid::GetEntryCost(int r, int c) const {
   if (!IsValid(r, c)) {
     throw std::out_of_range("Coordinates outside the map.");
@@ -58,17 +99,21 @@ double Grid::GetEntryCost(int r, int c) const {
   return cell == 10 ? 2.0 : static_cast<double>(cell);
 }
 
-void Grid::WritePath(const std::vector<std::pair<int, int>>& path,
-                     const std::string& output_file_name) const {
+/**
+ * @brief Function to get the output for the grid.
+ * 
+ * @param path 
+ * @param output_file_name 
+ */
+void Grid::WritePath(const std::vector<std::pair<int, int>>& path, const std::string& output_file_name) const {
   std::vector<std::vector<std::string>> output(
       rows_, std::vector<std::string>(columns_));
   for (int matrix_row = 0; matrix_row < rows_; ++matrix_row) {
     for (int matrix_column = 0; matrix_column < columns_; ++matrix_column) {
-      output[matrix_row][matrix_column] =
-          std::to_string(grid_[matrix_row][matrix_column]);
+      output[matrix_row][matrix_column] = std::to_string(grid_[matrix_row][matrix_column]);
     }
   }
-  for (const auto& [r, c] : path) {
+  for(const auto& [r, c] : path) {
     output[r][c] = "*";
   }
   std::ofstream output_file{output_file_name};

@@ -129,6 +129,30 @@ aestrella/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aestrella.dir/build.make CMakeFiles/aestrella.dir/build
 .PHONY : aestrella/fast
 
+src/functions.o: src/functions.cc.o
+.PHONY : src/functions.o
+
+# target to build an object file
+src/functions.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aestrella.dir/build.make CMakeFiles/aestrella.dir/src/functions.cc.o
+.PHONY : src/functions.cc.o
+
+src/functions.i: src/functions.cc.i
+.PHONY : src/functions.i
+
+# target to preprocess a source file
+src/functions.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aestrella.dir/build.make CMakeFiles/aestrella.dir/src/functions.cc.i
+.PHONY : src/functions.cc.i
+
+src/functions.s: src/functions.cc.s
+.PHONY : src/functions.s
+
+# target to generate assembly for a file
+src/functions.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aestrella.dir/build.make CMakeFiles/aestrella.dir/src/functions.cc.s
+.PHONY : src/functions.cc.s
+
 src/grid.o: src/grid.cc.o
 .PHONY : src/grid.o
 
@@ -186,6 +210,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... aestrella"
+	@echo "... src/functions.o"
+	@echo "... src/functions.i"
+	@echo "... src/functions.s"
 	@echo "... src/grid.o"
 	@echo "... src/grid.i"
 	@echo "... src/grid.s"

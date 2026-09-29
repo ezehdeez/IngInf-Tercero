@@ -8,7 +8,12 @@
  * @file node.h
  * @author Ezequiel Hernández Poleo (alu0101735399@ull.edu.es)
  * @date 2026-09-23
- * @brief 
+ * @brief Struct declaration for the nodes in the search tree. It contains a 
+ *        several useful values such as HeuristicFunction or its coords in the
+ *        grid. As well as its predecesor.
+ * 
+ *        This file also contains the Comparation Function for the priority queue
+ *        that is used for the Open Node List.
  */
 
 #include <memory>
